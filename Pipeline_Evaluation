@@ -1,0 +1,63 @@
+pipeline {
+ agent any
+    parameters {
+        string(name: 'NAME', description: 'Veuillez entrer votre nom')
+	    password(name: 'SONAR_SERVER_PWD', description: 'Entrez un mot de passe')
+        text(name: 'DESC', description: 'Décrivez votre objectif')
+        choice(name: 'MONTH', choices: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'], description: 'Mois : ')
+        
+    }
+    stages {
+        stage('Printing name') {
+            steps {
+                script {
+                    def name = "${params.NAME}"
+		            def sonar = "${params.SONAR_SERVER_PWD}"
+                    def desc = "${params.DESC}"
+                    def month = "${params.MONTH}"
+
+                    echo "Bonjour $NAME , votre objectif est le suivant : "
+
+                    if(month == "Janvier") {
+                        echo "Janvier : $desc"
+
+		            } else if(month == "Février") {
+			            echo "Février : $desc"
+
+		            } else if(month == "Mars") {
+			            echo "Mars : $desc"
+
+                    } else if(month == "Avril") {
+                        echo "Avril : $desc"
+
+                    } else if(month == "Mai") {
+                        echo "Mai : $desc"
+
+                    } else if(month == "Juin") {
+                        echo "Juin : $desc"
+
+                    } else if(month == "Juillet") {
+                        echo "Juillet : $desc"
+
+                    } else if(month == "Aout") {
+                        echo "Aout : $desc"
+
+                    } else if(month == "Septembre") {
+                        echo "Septembre : $desc"
+
+                    } else if(month == "Octobre") {
+                        echo "Octobre : $desc"
+
+                    } else if(month == "Novembre") {
+                        echo "Novembre : $desc"
+
+                    } else if(month == "Décembre") {
+                        echo "Décembre : $desc"
+                    }
+
+                }
+            }
+        }
+   }
+
+}
